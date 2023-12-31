@@ -19,6 +19,16 @@
       "name": "Blusa",
       "price": "89.99",
       "id": 4
+    },
+    {
+      "name": "Regata",
+      "price": "12",
+      "id": 5
+    },
+    {
+      "name": "Tênis",
+      "price": "123.44",
+      "id": 6
     }
   ]
 }

@@ -41,6 +41,13 @@ function App() {
       body: JSON.stringify(product)
     });
 
+    //CARREGAMENTO DINAMICO - ATUALIZANDO LISTA DE ITENS
+    const addedProduct = await res.json();//convertendo em objeto
+    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    //resetando os inputs
+    setName("");
+    setPrice("");
+
   }
 
  
