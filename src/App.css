@@ -7,6 +7,7 @@
 
 table {
   border: 1px solid black;
+  margin: 0 auto;
 }
 
 th {
@@ -19,8 +20,9 @@ th, td {
   padding: 4px;
 }
 
-.add-error {
+.add-product {
   border: 1px solid #ddd;
+  margin-top: 5px;
 }
 
 form {
@@ -35,5 +37,6 @@ form input {
   flex-direction: column;
   margin-bottom: 15px;
 }
+
 
 

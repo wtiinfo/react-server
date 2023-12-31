@@ -9,6 +9,9 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+
   //RESGATANDO DADOS
   useEffect(() => {
     async function fetchData() {
@@ -20,7 +23,16 @@ function App() {
   }, []);
 
   //ADICIONANDO DADOS
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const product = {
+      name,
+      price
+    }
+
+    console.log(product);
+  }
 
  
 
@@ -43,6 +55,18 @@ function App() {
           )}
         </tbody>
        </table>
+
+       <div className="add-product">
+        <form onSubmit={handleSubmit}>
+            <lable>Nome:
+              <input type="text" value={name} name="name" onChange={(e) => setName(e.target.value)} />
+            </lable>
+            <lable>Preço:
+              <input type="text" value={price} name="price" onChange={(e) => setPrice(e.target.value)} />
+            </lable>
+            <input type="submit" value="Criar" />
+        </form>
+       </div>
 
      </div>
     </>
