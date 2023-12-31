@@ -2,6 +2,8 @@
 import './App.css'
 import { useState, useEffect } from 'react';
 
+//USANDO CUSTOM HOOK
+import { useFetch } from './hooks/useFetch';
 
 const url = "http://localhost:3000/products";
 
@@ -13,14 +15,17 @@ function App() {
   const [price, setPrice] = useState("");
 
   //RESGATANDO DADOS
-  useEffect(() => {
-    async function fetchData() {
-      const req = await fetch(url);
-      const data = await req.json();
-      setProducts(data);
-    }
-    fetchData();
-  }, []);
+  //useEffect(() => {
+    //async function fetchData() {
+      //const req = await fetch(url);
+      //const data = await req.json();
+      //setProducts(data);
+    //}
+    //fetchData();
+  //}, []);
+  //USANDO CUSTOM HOOK
+  const {data: items} = useFetch(url);
+
 
   //ADICIONANDO DADOS
   const handleSubmit = async (e) => {
@@ -63,7 +68,8 @@ function App() {
           <th>Preço</th>
         </thead>
         <tbody>
-          {products.map((p) => 
+          {/*Se houver items = true, listar*/}
+          {items && items.map((p) => 
             <tr key={p.id}>
               <td>{p.name}</td>
               <td>{p.price}</td>
@@ -83,7 +89,6 @@ function App() {
             <input type="submit" value="Criar" />
         </form>
        </div>
-
      </div>
     </>
   )
