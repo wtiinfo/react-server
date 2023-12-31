@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+table {
+  border: 1px solid black;
+}
+
+th {
+  background-color: yellowgreen;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid orange;
+  padding: 4px;
+}
+
+.add-error {
+  border: 1px solid #ddd;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+
