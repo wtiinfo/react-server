@@ -15,8 +15,8 @@ function App() {
   //RESGATANDO DADOS
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(url);
-      const data = await response.json();
+      const req = await fetch(url);
+      const data = await req.json();
       setProducts(data);
     }
     fetchData();
@@ -32,6 +32,15 @@ function App() {
     }
 
     console.log(product);
+
+    const res = await fetch(
+      url, 
+      { method: "POST",
+        headers: {"Content-Type": "application/json"
+      },
+      body: JSON.stringify(product)
+    });
+
   }
 
  

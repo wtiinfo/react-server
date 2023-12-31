@@ -1,19 +1,24 @@
 {
-"products": [
-        {
-            "id": 1,
-            "name": "Camisa",
-            "price": "59.95"
-        },
-        {
-            "id": 2,
-            "name": "Calça Vermelha",
-            "price": "90.90"
-        },
-        {
-            "id": 3,
-            "name": "Boné",
-            "price": "19.99"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": "59.95"
+    },
+    {
+      "id": 2,
+      "name": "Calça Vermelha",
+      "price": "90.90"
+    },
+    {
+      "id": 3,
+      "name": "Boné",
+      "price": "19.99"
+    },
+    {
+      "name": "Blusa",
+      "price": "89.99",
+      "id": 4
+    }
+  ]
 }
