@@ -31,9 +31,19 @@
       "id": 6
     },
     {
-      "name": "",
-      "price": "",
+      "name": "casaco",
+      "price": "185.56",
       "id": 7
+    },
+    {
+      "name": "BLUSA",
+      "price": "123",
+      "id": 8
+    },
+    {
+      "name": "Bota",
+      "price": "32",
+      "id": 9
     }
   ]
 }

@@ -16,15 +16,15 @@ function App() {
 
   //RESGATANDO DADOS
   //useEffect(() => {
-    //async function fetchData() {
-      //const req = await fetch(url);
-      //const data = await req.json();
-      //setProducts(data);
-    //}
-    //fetchData();
+  //async function fetchData() {
+  //const req = await fetch(url);
+  //const json = await req.json();
+  //setProducts(json);
+  //}
+  //fetchData();
   //}, []);
   //USANDO CUSTOM HOOK
-  const {data: items} = useFetch(url);
+  const { data: items, httpConfig, loading } = useFetch(url);
 
 
   //ADICIONANDO DADOS
@@ -38,48 +38,51 @@ function App() {
 
     console.log(product);
 
-    const res = await fetch(
-      url, 
-      { method: "POST",
-        headers: {"Content-Type": "application/json"
-      },
-      body: JSON.stringify(product)
-    });
+    //const res = await fetch(
+     // url,
+     // {
+       // method: "POST",
+        //headers: {
+          //"Content-Type": "application/json"
+        //},
+        //body: JSON.stringify(product)
+      //});
 
     //CARREGAMENTO DINAMICO - ATUALIZANDO LISTA DE ITENS
-    const addedProduct = await res.json();//convertendo em objeto
-    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    //const addedProduct = await res.json();//convertendo em objeto
+    //setProducts((prevProducts) => [...prevProducts, addedProduct]);
     //resetando os inputs
+    //REFATORANDO POST
+    httpConfig(product, "POST")
     setName("");
     setPrice("");
 
   }
 
- 
-
   return (
     <>
-     <div className="App">
-      <h1>List de produtos</h1>
-    
-       <table>
-        <thead>
-          <th>Item</th>
-          <th>Preço</th>
-        </thead>
-        <tbody>
-          {/*Se houver items = true, listar*/}
-          {items && items.map((p) => 
-            <tr key={p.id}>
-              <td>{p.name}</td>
-              <td>{p.price}</td>
-            </tr>
-          )}
-        </tbody>
-       </table>
+      <div className="App">
+        <h1>List de produtos</h1>
+       {/* loading */}
+       {loading && <p>Carregando dados...</p>}
+        <table>
+          <thead>
+            <th>Item</th>
+            <th>Preço</th>
+          </thead>
+          <tbody>
+            {/*Se houver items = true, listar*/}
+            {items && items.map((p) =>
+              <tr key={p.id}>
+                <td>{p.name}</td>
+                <td>{p.price}</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
 
-       <div className="add-product">
-        <form onSubmit={handleSubmit}>
+        <div className="add-product">
+          <form onSubmit={handleSubmit}>
             <lable>Nome:
               <input type="text" value={name} name="name" onChange={(e) => setName(e.target.value)} />
             </lable>
@@ -87,9 +90,9 @@ function App() {
               <input type="text" value={price} name="price" onChange={(e) => setPrice(e.target.value)} />
             </lable>
             <input type="submit" value="Criar" />
-        </form>
-       </div>
-     </div>
+          </form>
+        </div>
+      </div>
     </>
   )
 }
