@@ -24,8 +24,12 @@ function App() {
   //fetchData();
   //}, []);
   //USANDO CUSTOM HOOK
-  const { data: items, httpConfig, loading } = useFetch(url);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
+
+  const handleDelete = (id) => {
+    httpConfig(id, "DELETE");
+  }
 
   //ADICIONANDO DADOS
   const handleSubmit = async (e) => {
@@ -39,14 +43,14 @@ function App() {
     console.log(product);
 
     //const res = await fetch(
-     // url,
-     // {
-       // method: "POST",
-        //headers: {
-          //"Content-Type": "application/json"
-        //},
-        //body: JSON.stringify(product)
-      //});
+    // url,
+    // {
+    // method: "POST",
+    //headers: {
+    //"Content-Type": "application/json"
+    //},
+    //body: JSON.stringify(product)
+    //});
 
     //CARREGAMENTO DINAMICO - ATUALIZANDO LISTA DE ITENS
     //const addedProduct = await res.json();//convertendo em objeto
@@ -63,24 +67,22 @@ function App() {
     <>
       <div className="App">
         <h1>List de produtos</h1>
-       {/* loading */}
-       {loading && <p>Carregando dados...</p>}
-        <table>
-          <thead>
-            <th>Item</th>
-            <th>Preço</th>
-          </thead>
+        {/* loading */}
+        {loading && <p>Carregando dados...</p>}
+        {error && <p>{error}</p>}
+        {!error && <table>
           <tbody>
             {/*Se houver items = true, listar*/}
             {items && items.map((p) =>
               <tr key={p.id}>
                 <td>{p.name}</td>
                 <td>{p.price}</td>
+                <td><button onClick={() => handleDelete(p.id)}>Deletar</button></td>
               </tr>
             )}
           </tbody>
-        </table>
-
+        </table> 
+        }
         <div className="add-product">
           <form onSubmit={handleSubmit}>
             <lable>Nome:
